@@ -1,8 +1,6 @@
 #include <iostream>
 #include "findPrimes.h"
 
-long long findPrimes(int nth);
-
 int main() {
     std::cout << "Enter a number corresponding to the nth prime you're looking for (ex. 1 is 2, 2 is 3, 5 is 11, ..) or 0 to exit: " << '\n';
     int input{0};

@@ -1,8 +1,6 @@
 #include <iostream>
 #include "isprime.h"
 
-bool isPrime(const long long number);
-
 void getNumber(long long* number) {
     std::cout << '\n' << "Insert any positive integer or -1 to terminate the program: ";
     std::cin >> *number;

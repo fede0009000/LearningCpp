@@ -1,9 +1,6 @@
 #include <iostream>
 #include "isprime.h"
 
-bool isPrime(const long long number);
-long long pow(const long long* num, int exponent);
-
 void findFermatPrime() {
     long long number {0};
 

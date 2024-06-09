@@ -1,14 +1,14 @@
 #ifndef FINDPRIMES
 #define FINDPRIMES
 
-long long nthPrime(int n) { //nth indicates that the function finds the nth prime
+int nthPrime(int n) { //nth indicates that the function finds the nth prime
     if(n < 1) return 1;
     else if(n == 1) return 2;
-    long long num{3};
+    int num{3};
     bool isPrime{true};
     for(int i{1}; i < n; ) {
 
-        if(num < 0) return 1; //check for overflow if num somehow reaches long long limit
+        if(num < 0) return 1; //check for overflow
 
         isPrime = true;
 

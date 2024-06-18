@@ -3,8 +3,8 @@
 
 bool isPrime(const long long number) {
     if(number<=1) return false;
-    else if(number == 2) return true;
-    else if(!(number%2)) return false;
+    else if(number == 2) return true; //if 2
+    else if(!(number%2)) return false; //if even
     for(int i{3}; (i*i)<=number ; ++i) {
         if((number%i) == 0) return false;
     }

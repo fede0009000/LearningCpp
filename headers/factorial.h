@@ -1,7 +1,6 @@
 #ifndef FACTORIAL
 #define FACTORIAL
 
-#include <iostream>
 //making it with non-type templates just to understand how they work
 template <int N>
 constexpr long long factorial() {

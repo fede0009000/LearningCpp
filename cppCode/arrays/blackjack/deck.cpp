@@ -1,5 +1,8 @@
+#include <cassert>
 #include <iostream>
 #include <array>
+#include <algorithm>
+#include "Random.h"
 
 struct Card {
     enum Rank {
@@ -46,24 +49,49 @@ struct Card {
         return out;
     }
 
+    static constexpr std::array rankValues {11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10};
     constexpr int value() const {
-        static constexpr std::array rankValues {11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10};
         return rankValues[rank];
     }
 };
 
+class Deck {
+private:
+    std::array<Card, 52> m_deck {};
+    std::size_t m_cardNum {0};
+public:
+//constructor
+    Deck() {
+        std::size_t i{0};
+        for(const auto& s : Card::allSuits) {
+            for(const auto& r : Card::allRanks) {
+                m_deck[i] = Card {r, s};
+                ++i;
+            }
+        }
+    }
+
+//deal card
+    const Card& dealCard() {
+        assert(m_cardNum < 52);
+        return m_deck[m_cardNum++];
+    } 
+
+//shuffle
+    void shuffle() {
+        std::shuffle(m_deck.begin(), m_deck.end(), Random::mt);
+        m_cardNum = 0;
+        return;
+    }
+};
 
 int main()
 {
-    // Print one card
-    Card card { Card::rank_5, Card::suit_heart };
-    std::cout << card << '\n';
+    Deck deck{};
+    std::cout << deck.dealCard() << ' ' << deck.dealCard() << ' ' << deck.dealCard() << '\n';
 
-    // Print all cards
-    for (auto suit : Card::allSuits)
-        for (auto rank : Card::allRanks)
-            std::cout << Card { rank, suit } << ' ';
-    std::cout << '\n';
+    deck.shuffle();
+    std::cout << deck.dealCard() << ' ' << deck.dealCard() << ' ' << deck.dealCard() << '\n';
 
     return 0;
 }

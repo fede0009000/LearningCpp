@@ -14,7 +14,7 @@ public:
 	Vector3d(double x, double y, double z);
 
 	void print() const;
-    friend void Point3d::moveByVector(const Vector3d& v);
+	friend void Point3d::moveByVector(const Vector3d &v);
 };
 
 #endif

@@ -1,19 +1,24 @@
 #include <iostream>
 #include <vector>
 
-void printStack(std::vector<int>& vector) {
+void printStack(std::vector<int> &vector)
+{
 
     std::cout << "\t(Stack: ";
-    if(vector.empty()) std::cout << "empty)\n";
-    else {
-        for(int i : vector) std::cout << i << ' ';
+    if (vector.empty())
+        std::cout << "empty)\n";
+    else
+    {
+        for (int i : vector)
+            std::cout << i << ' ';
         std::cout << ')' << '\n';
     }
 
     return;
 }
 
-void pushAndPrint(std::vector<int>& vector, int num) {
+void pushAndPrint(std::vector<int> &vector, int num)
+{
 
     vector.push_back(num);
     std::cout << "Push " << num << ' ';
@@ -22,10 +27,12 @@ void pushAndPrint(std::vector<int>& vector, int num) {
     return;
 }
 
-void popAndPrint(std::vector<int>& vector) {
+void popAndPrint(std::vector<int> &vector)
+{
 
-    if(vector.size() == 0) return;
-    
+    if (vector.size() == 0)
+        return;
+
     vector.pop_back();
     std::cout << "Pop   ";
 
@@ -33,18 +40,19 @@ void popAndPrint(std::vector<int>& vector) {
     return;
 }
 
-int main() {
-    std::vector<int> v {};
+int main()
+{
+    std::vector<int> v{};
     printStack(v);
 
     pushAndPrint(v, 1);
-    pushAndPrint(v,2);
-    pushAndPrint(v,3);
+    pushAndPrint(v, 2);
+    pushAndPrint(v, 3);
     popAndPrint(v);
-    pushAndPrint(v,4);
-    popAndPrint(v);
-    popAndPrint(v);
+    pushAndPrint(v, 4);
     popAndPrint(v);
     popAndPrint(v);
     popAndPrint(v);
-} 
+    popAndPrint(v);
+    popAndPrint(v);
+}

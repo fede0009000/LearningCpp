@@ -1,22 +1,32 @@
 #ifndef ISPRIME
 #define ISPRIME
 
-bool isPrime(const long long number) {
-    if(number<=1) return false;
-    else if(number == 2) return true; //if 2
-    else if(!(number%2)) return false; //if even
-    for(int i{3}; (i*i)<=number ; ++i) {
-        if((number%i) == 0) return false;
+bool isPrime(const long long number)
+{
+    if (number <= 1)
+        return false;
+    else if (number == 2)
+        return true; // if 2
+    else if (!(number % 2))
+        return false; // if even
+    for (int i{3}; (i * i) <= number; ++i)
+    {
+        if ((number % i) == 0)
+            return false;
     }
     return true;
 }
 
-constexpr long long pow(const long long num, int exponent) {
+constexpr long long pow(const long long num, int exponent)
+{
     long long temp{num};
-    if(exponent == 0) return 1;
-    else if(exponent < 0) return 0;
-    while(exponent>1) {
-        temp*=num;
+    if (exponent == 0)
+        return 1;
+    else if (exponent < 0)
+        return 0;
+    while (exponent > 1)
+    {
+        temp *= num;
         --exponent;
     }
     return temp;

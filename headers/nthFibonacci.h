@@ -2,7 +2,7 @@
 #define NTHFIBONACCI
 
 long long nthFibonacci(int n) // overflows too easily, thus long long
-{ 
+{
     if (n == 0)
         return 0;
     if (n == 1 || n == 2)

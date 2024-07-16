@@ -11,7 +11,7 @@
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-I", "${workspaceFolder}\\headers"
+                "-I", "${workspaceFolder}\\cppCode\\headers"
             ],
             "options": {
                 "cwd": "${fileDirname}"

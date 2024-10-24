@@ -43,7 +43,7 @@ int main()
         possibleChars.append("!\"#$%&'()*+, -./:;<=>?@[\\]^_`{|}~");
 
     // CHECK POSSIBLECHARS ISN'T EMPTY
-    if(possibleChars.empty())
+    if (possibleChars.empty())
     {
         std::cout << "\nThere are no possible characters to build your password. Please try again.\n";
         return 1;
@@ -52,9 +52,11 @@ int main()
     // PASSWORD GENERATOR
     std::string password{""};
     const int possibleCharsLen{static_cast<int>(possibleChars.size())};
-    for (int i{0}; i < length; ++i) {
+    for (int i{0}; i < length; ++i)
+    {
         password += possibleChars[Random::get(0, possibleCharsLen - 1)];
     }
 
-    std::cout << "\nHere is your new password:\n" << password;
+    std::cout << "\nHere is your new password:\n"
+              << password;
 }

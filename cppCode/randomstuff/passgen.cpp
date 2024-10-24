@@ -20,27 +20,34 @@ int main()
     std::cout << "Password Generator\n\n";
 
     // LENGTH
-    std::cout << "Insert password length: ";
     int length{};
     do
     {
+        std::cout << "Insert password length: ";
         std::cin >> length;
     } while (failureCin() || length < 1);
 
     // UPPERCASE
-    std::cout << "Do you want the password to contain uppercase letters? [Y/n]";
+    std::cout << "\nDo you want the password to contain uppercase letters? [Y/n]\n";
     if (getYnInput())
         possibleChars.append("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
     // LOWERCASE
-    std::cout << "Do you want the password to contain lowercase letters? [Y/n]";
+    std::cout << "\nDo you want the password to contain lowercase letters? [Y/n]\n";
     if (getYnInput())
         possibleChars.append("abcdefghijklmnopqrstuvwxyz");
 
     // SYMBOLS
-    std::cout << "Do you want the password to contain symbols (eg. punctuation)? [Y/n]";
+    std::cout << "\nDo you want the password to contain symbols (eg. punctuation)? [Y/n]\n";
     if (getYnInput())
         possibleChars.append("!\"#$%&'()*+, -./:;<=>?@[\\]^_`{|}~");
+
+    // CHECK POSSIBLECHARS ISN'T EMPTY
+    if(possibleChars.empty())
+    {
+        std::cout << "\nThere are no possible characters to build your password. Please try again.\n";
+        return 1;
+    }
 
     // PASSWORD GENERATOR
     std::string password{""};
@@ -49,5 +56,5 @@ int main()
         password += possibleChars[Random::get(0, possibleCharsLen - 1)];
     }
 
-    std::cout << "Here is your new password: " << password;
+    std::cout << "\nHere is your new password:\n" << password;
 }

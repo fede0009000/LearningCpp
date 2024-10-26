@@ -8,10 +8,16 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "-pedantic-errors",
+                "-Wall",
+                "-Weffc++",
+                "-Wextra",
+                "-Wconversion",
+                "-Wsign-conversion",
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-I", "${workspaceFolder}\\cppCode\\headers"
+                "-I",
+                "${workspaceFolder}\\cppCode\\headers"
             ],
             "options": {
                 "cwd": "${fileDirname}"

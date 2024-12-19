@@ -22,6 +22,13 @@ public:
     friend Fraction operator*(int a, const Fraction& fr1);
     friend Fraction operator*(const Fraction& fr1, const Fraction& fr2);
 
+    friend bool operator==(const Fraction& fr1, const Fraction& fr2);
+    friend bool operator!=(const Fraction& fr1, const Fraction& fr2);
+    friend bool operator>(const Fraction& fr1, const Fraction& fr2);
+    friend bool operator>=(const Fraction& fr1, const Fraction& fr2);
+    friend bool operator<(const Fraction& fr1, const Fraction& fr2);
+    friend bool operator<=(const Fraction& fr1, const Fraction& fr2);
+
     friend std::ostream& operator<<(std::ostream& out, const Fraction& fr1);
     friend std::istream& operator>>(std::istream& in, Fraction& fr1);
 
@@ -51,6 +58,36 @@ Fraction operator*(const Fraction& fr1, const Fraction& fr2)
     return Fraction{fr1.m_numerator * fr2.m_numerator, fr1.m_denominator * fr2.m_denominator};
 }
 
+bool operator==(const Fraction& fr1, const Fraction& fr2)
+{
+    return (fr1.m_numerator == fr2.m_numerator) && (fr1.m_denominator == fr2.m_denominator);
+}
+
+bool operator!=(const Fraction& fr1, const Fraction& fr2)
+{
+    return (fr1.m_numerator != fr2.m_numerator) && (fr1.m_denominator != fr2.m_denominator);
+}
+
+bool operator>(const Fraction& fr1, const Fraction& fr2)
+{
+    return (fr1.m_numerator > fr2.m_numerator) && (fr1.m_denominator > fr2.m_denominator);
+}
+
+bool operator>=(const Fraction& fr1, const Fraction& fr2)
+{
+    return (fr1.m_numerator >= fr2.m_numerator) && (fr1.m_denominator >= fr2.m_denominator);
+}
+
+bool operator<(const Fraction& fr1, const Fraction& fr2)
+{
+    return (fr1.m_numerator < fr2.m_numerator) && (fr1.m_denominator < fr2.m_denominator);
+}
+
+bool operator<=(const Fraction& fr1, const Fraction& fr2)
+{
+    return (fr1.m_numerator <= fr2.m_numerator) && (fr1.m_denominator <= fr2.m_denominator);
+}
+
 std::ostream& operator<<(std::ostream& out, const Fraction& fr1)
 {
     out << fr1.m_numerator << '/' << fr1.m_denominator;
@@ -73,15 +110,14 @@ std::istream& operator>>(std::istream& in, Fraction& fr1)
 
 int main()
 {
-	Fraction f1{};
-	std::cout << "Enter fraction 1: ";
-	std::cin >> f1;
+	Fraction f1{ 3, 2 };
+	Fraction f2{ 5, 8 };
 
-	Fraction f2{};
-	std::cout << "Enter fraction 2: ";
-	std::cin >> f2;
-
-	std::cout << f1 << " * " << f2 << " is " << f1 * f2 << '\n'; // note: The result of f1 * f2 is an r-value
-
+	std::cout << f1 << ((f1 == f2) ? " == " : " not == ") << f2 << '\n';
+	std::cout << f1 << ((f1 != f2) ? " != " : " not != ") << f2 << '\n';
+	std::cout << f1 << ((f1 < f2) ? " < " : " not < ") << f2 << '\n';
+	std::cout << f1 << ((f1 > f2) ? " > " : " not > ") << f2 << '\n';
+	std::cout << f1 << ((f1 <= f2) ? " <= " : " not <= ") << f2 << '\n';
+	std::cout << f1 << ((f1 >= f2) ? " >= " : " not >= ") << f2 << '\n';
 	return 0;
 }

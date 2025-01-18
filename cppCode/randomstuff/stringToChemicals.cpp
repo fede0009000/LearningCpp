@@ -16,18 +16,47 @@ constexpr std::array elements{
     "Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn", "Nh", "Fl", "Mc", "Lv", "Ts", "Og",   //118  
 };
 
+// MAKE RECURSIVE WORKS BETTER
 int main()
 {   
     std::string str{};
-    std::cout << "Insert the word you want to translate to chemical elements: ";
+    std::cout << "\nInsert the word you want to translate to chemical elements: ";
     std::cin >> str;
 
-    int strlength{str.length()};
-    for (int i{0}; i < strlength; ++i)
+    std::size_t strlength{str.length()};
+    std::string output{};
+    // for each character in the string
+    for (std::size_t i{0}; i < strlength; ++i)
     {
-        for (std::string s : elements)
+        // for each element
+        for (std::string element : elements)
         {
-            for (char c : s)
+            bool good{false};
+            // for each letter in an element
+            std::size_t j{0};
+            for (; j < element.length(); ++j)
+            {
+                if (str[i + j] == element[j])
+                    good = true;
+                else good = false;
+
+            }
+
+            if (good)
+            {
+                output.append(element);
+                if (j > 1)
+                    ++i;
+                break;
+            }
+            if (!good && element == "Og") 
+            {
+                output = "";
+                i = 0;
+                break;
+            }
         }
     }
+
+    std::cout << output;
 }
